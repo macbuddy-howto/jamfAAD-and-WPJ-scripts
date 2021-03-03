@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+#macOS WPJ and jamfAAD run with no cache as end user
+#By Bryce Carlson - 3/2/2021
+#
+#variables
+currentuser=`stat -f "%Su" /dev/console`
+#substituting as user stored in variable and kicking off gather
+su "$currentuser" -c "/Library/Application\ Support/JAMF/Jamf.app/Contents/MacOS/JamfAAD.app/Contents/MacOS/JamfAAD gatherAADInfo -disable-cache-read"
+#
+exit 0
