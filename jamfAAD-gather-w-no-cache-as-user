@@ -5,7 +5,9 @@
 #
 #variables
 currentuser=`stat -f "%Su" /dev/console`
-#substituting as user stored in variable and kicking off gather
+#substituting as user stored in variable and kicking off WPJ and gather
+su "$currentuser" -c "/Library/Application\ Support/JAMF/Jamf.app/Contents/MacOS/JamfAAD.app/Contents/MacOS/JamfAAD registerWithIntune"
+sleep 3
 su "$currentuser" -c "/Library/Application\ Support/JAMF/Jamf.app/Contents/MacOS/JamfAAD.app/Contents/MacOS/JamfAAD gatherAADInfo -disable-cache-read"
 #
 exit 0
