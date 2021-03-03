@@ -1,0 +1,18 @@
+#!/bin/bash
+###########################################
+# Reads the end users login.keychain for the WPJ cert. and AAD ID from the cert. CN
+###########################################
+# Created by Bryce Carlson
+#
+# Dated: 2021-03-2
+###########################################
+
+#current logged in user variable
+currentuser=`stat -f "%Su" /dev/console`
+
+#variable for current logged in user AAD ID cert. and WPJ key
+AAD_ID=$(su "$currentuser" -c "security find-certificate -a -Z | grep -B 9 "MS-ORGANIZATION-ACCESS" | awk '/\"alis\"<blob>=\"/ {print $NF}' | sed 's/  \"alis\"<blob>=\"//;s/.$//'")
+
+echo "<result>$AAD_ID</result>"
+
+exit 0 
