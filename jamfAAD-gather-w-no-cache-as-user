@@ -6,8 +6,10 @@
 #variables
 currentuser=`stat -f "%Su" /dev/console`
 #substituting as user stored in variable and kicking off WPJ and gather
-su "$currentuser" -c "/Library/Application\ Support/JAMF/Jamf.app/Contents/MacOS/JamfAAD.app/Contents/MacOS/JamfAAD registerWithIntune"
+#su "$currentuser" -c "/Library/Application\ Support/JAMF/Jamf.app/Contents/MacOS/JamfAAD.app/Contents/MacOS/JamfAAD registerWithIntune"
+su "$currentuser" -c "/Library/Application\ Support/JAMF/Jamf.app/Contents/MacOS/Jamf\ Conditional\ Access.app/Contents/MacOS/Jamf\ Conditional\ Access registerWithIntune"
 sleep 3
-su "$currentuser" -c "/Library/Application\ Support/JAMF/Jamf.app/Contents/MacOS/JamfAAD.app/Contents/MacOS/JamfAAD gatherAADInfo -disable-cache-read"
+#su "$currentuser" -c "/Library/Application\ Support/JAMF/Jamf.app/Contents/MacOS/JamfAAD.app/Contents/MacOS/JamfAAD gatherAADInfo -disable-cache-read"
+su "$currentuser" -c "/Library/Application\ Support/JAMF/Jamf.app/Contents/MacOS/Jamf\ Conditional\ Access.app/Contents/MacOS/Jamf\ Conditional\ Access gatherAADInfo -disable-cache-read"
 #
 exit 0
