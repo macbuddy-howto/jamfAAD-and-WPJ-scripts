@@ -18,9 +18,10 @@ echo "Removing keychain password items for jamfAAD"
 #jamfAAD items
 su "$currentuser" -c "security delete-generic-password -l 'com.jamf.management.jamfAAD'"
 rm -rf /Users/"$currentuser"/Library/Saved\ Application\ State/com.jamfsoftware.selfservice.mac.savedState
-rm -r /Users/"$currentuser"/Library/Cookes/com.jamf.management.jamfAAD.binarycookies
+rm -r /Users/"$currentuser"/Library/Cookies/com.jamf.management.jamfAAD.binarycookies
 rm -rf /Users/"$currentuser"/Library/Saved\ Application\ State/com.jamf.management.jamfAAD.savedState
-su "$currentuser" -c "/Library/Application\ Support/JAMF/Jamf.app/Contents/MacOS/JamfAAD.app/Contents/MacOS/JamfAAD clean"
+#su "$currentuser" -c "/Library/Application\ Support/JAMF/Jamf.app/Contents/MacOS/JamfAAD.app/Contents/MacOS/JamfAAD clean"
+su "$currentuser" -c "/Library/Application\ Support/JAMF/Jamf.app/Contents/MacOS/Jamf\ Conditional\ Access.app/Contents/MacOS/Jamf\ Conditional\ Access clean"
 #
 echo "Removing keychain password items for Company Portal app (v2.6 and higher with new com.microsoft.CompanyPortalMac bundle ID)"
 #Company Portal app items
